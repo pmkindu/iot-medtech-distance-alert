@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  medtech-api:
+    build: .
+    container_name: medtech_distance_api
+    ports:
+      - "8000:8000"
+    environment:
+      - SERIAL_PORT=MOCK
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+
+  bdd-test-runner:
+    build: .
+    container_name: medtech_bdd_runner
+    depends_on:
+      medtech-api:
+        condition: service_healthy
+    command: behave
+    environment:
+      - BASE_URL=http://medtech-api:8000

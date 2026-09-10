@@ -1,0 +1,24 @@
+name: MedTech CI/CD Test Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  bdd-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Build and Run BDD Tests via Docker Compose
+        run: |
+          docker compose up --build --exit-code-from bdd-test-runner
+
+      - name: Clean up Docker containers
+        if: always()
+        run: |
+          docker compose down --volumes --remove-orphans

@@ -1,0 +1,6 @@
+fastapi==0.110.0
+uvicorn==0.28.0
+pyserial==3.5
+behave==1.2.6
+requests==2.31.0
+pytest==8.0.2
