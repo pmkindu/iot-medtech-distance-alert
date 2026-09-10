@@ -8,7 +8,7 @@ on:
 env:
   AWS_REGION: eu-north-1
   ECR_REPOSITORY: iot-medtech-api
-  ECS_SERVICE: medtech-api-service
+  ECS_SERVICE: medtech-api-task-service-trynaey2
   ECS_CLUSTER: medtech-cluster
   ECS_TASK_DEFINITION: medtech-api-task
   CONTAINER_NAME: medtech-api-container
