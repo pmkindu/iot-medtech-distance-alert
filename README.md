@@ -1,5 +1,3 @@
-# IoT MedTech Distance Alert System
-
 Professional-grade, containerized IoT MedTech Telemetry API with automated BDD testing and CI/CD orchestration.
 
 ## Architecture Overview
@@ -19,3 +17,4 @@ docker compose up --build --exit-code-from bdd-test-runner
 ├── sensor_reader.py     # HAL layer for serial telemetry & mocking
 ├── Dockerfile           # Multi-stage container build definition
 └── docker-compose.yml   # Multi-container service orchestration
+EOF
