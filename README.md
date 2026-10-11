@@ -4,34 +4,34 @@ Professional-grade, containerized IoT MedTech Telemetry API with automated BDD t
 
 ---
 
-## 🛠️ Hardware-Aufbau & Verkabelung
+## 🛠️ Hardware Setup & Wiring
 
-Das nachfolgende Anschlussdiagramm zeigt den Aufbau des MedTech-Prototypen zur Distanzüberwachung:
+The following circuit diagram shows the hardware configuration of the MedTech distance monitoring prototype:
 
-![Hardware Schaltplan](hardware_schema.png)
+![Hardware Schematic](hardware_schema.png)
 
-### Komponenten:
-- **Mikrocontroller:** Arduino Uno (oder kompatibles Board)
-- **Sensor:** HC-SR04 Ultraschallsensor (Distanzmessung)
-- **Signalisierung:** Rote LED & Grüne LED (mit Vorwiderständen)
-- **Steckplatine & Jumper Wire**
+### Components:
+- **Microcontroller:** Arduino Uno 
+- **Sensor:** HC-SR04 Ultrasonic Sensor (distance measurement)
+- **Alert Signaling:** Red LED & Green LED (with current-limiting resistors)
+- **Breadboard & Jumper Wires**
 
-### Pin-Belegung:
-| Komponente | Sensor / Bauteil Pin | Arduino Pin | Funktion |
+### Pinout Mapping:
+| Component | Sensor / Component Pin | Arduino Pin | Function |
 | :--- | :--- | :--- | :--- |
-| **HC-SR04 Sensor** | VCC | `5V` | Stromversorgung |
-| | TRIG | Digital Pin | Trigger-Signal (Impulsstart) |
-| | ECHO | Digital Pin | Echo-Signal (Rücklaufmessung) |
-| | GND | `GND` | Masse |
-| **LEDs & Widerstände** | Rote LED (Warnung) | Digital Pin (PWM) | Warn-Signal bei unzulässiger Nähe |
-| | Grüne LED (Status) | Digital Pin (PWM) | Normalzustand / Betriebsanzeige |
+| **HC-SR04 Sensor** | VCC | `5V` | Power Supply |
+| | TRIG | Digital Pin | Trigger Signal (pulse start) |
+| | ECHO | Digital Pin | Echo Signal (travel time measurement) |
+| | GND | `GND` | Ground |
+| **LEDs & Resistors** | Red LED (Warning) | Digital Pin (PWM) | Alert signal for unsafe distance / proximity |
+| | Green LED (Status) | Digital Pin (PWM) | Normal operation / status indicator |
 
 ---
 
 ## 🏗️ Architecture Overview
 
 - **Backend API:** FastAPI (Python 3.10+)
-- **Hardware Abstraction Layer (HAL):** Supports physical `HARDWARE` serial inputs and automated `MOCK` telemetry mode[cite: 26].
+- **Hardware Abstraction Layer (HAL):** Supports physical `HARDWARE` serial inputs and automated `MOCK` telemetry mode.
 - **Test Automation:** Behavior-Driven Development (BDD) via Behave (Gherkin syntax) & Pytest.
 - **Orchestration:** Docker & Docker Compose.
 - **CI/CD:** GitHub Actions automated test runner.
@@ -52,7 +52,7 @@ iot-medtech-distance-alert/
 │   └── 📂 workflows/             # GitHub Actions CI/CD pipeline definition
 ├── 📂 features/                  # Gherkin feature files & Behave step definitions
 ├── 📂 firmware/                  # Embedded Arduino/C++ sensor logic
-├── 🖼️ hardware_schema.png         # Hardware-Schaltplan (Arduino Uno & HC-SR04)
+├── 🖼️ hardware_schema.png         # Hardware circuit diagram (Arduino Uno & HC-SR04)
 ├── 📄 Dockerfile                 # Multi-stage container build definition
 ├── 📄 docker-compose.yml         # Multi-container service orchestration
 ├── 📄 main.py                    # FastAPI application entry point
