@@ -43,8 +43,10 @@ Das nachfolgende Anschlussdiagramm zeigt den Aufbau des MedTech-Prototypen zur D
 ```bash
 docker compose up --build --exit-code-from bdd-test-runner
 ```
+---
 ## 📁 Project Structure
 
+```text
 iot-medtech-distance-alert/
 ├── 📂 .github/
 │   └── 📂 workflows/             # GitHub Actions CI/CD pipeline definition
@@ -56,3 +58,4 @@ iot-medtech-distance-alert/
 ├── 📄 main.py                    # FastAPI application entry point
 ├── 📄 requirements.txt           # Python dependencies
 └── 📄 sensor_reader.py           # HAL layer for serial telemetry & mocking
+```
