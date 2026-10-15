@@ -84,4 +84,3 @@ iot-medtech-distance-alert/
 ├── 📄 requirements.txt           # Python dependencies
 └── 📄 sensor_reader.py           # HAL layer for serial telemetry & mocking
 ```
----
