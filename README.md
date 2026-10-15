@@ -66,6 +66,23 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```bash
 docker compose up --build --exit-code-from bdd-test-runner
 ```
+How Docker Compose works in this project:
+The docker-compose.yml file orchestrates a multi-container setup consisting of two synchronized services:
+
+1. **medtech-api (medtech_distance_api):**
+
+- Builds and runs the FastAPI backend container in mock telemetry mode (SERIAL_PORT=MOCK).
+
+- Exposes port 8000 and features a built-in health check (/health) to ensure the server is fully responsive before dependent services start.
+
+2. **bdd-test-runner (medtech_bdd_runner):**
+
+- Automatically waits until the FastAPI API container passes its health check (condition: service_healthy).
+
+- Executes the complete Behavior-Driven Development (BDD) test suite using Behave and Gherkin feature files against the running API container.
+
+- The --exit-code-from bdd-test-runner flag ensures that the exit code of the test container is passed back to the host terminal (passing with 0 or failing if tests break) and automatically tears down all containers after execution.
+
 ---
 
 ## 📁 Project Structure
